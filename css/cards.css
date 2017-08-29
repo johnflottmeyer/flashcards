@@ -1,0 +1,80 @@
+#cards{
+	font-size:60px;
+	display:none;
+	height:auto;
+	/*min-height:300px;*/
+	/*width:95%;*/
+	margin:4px auto;
+	position:relative;
+}
+#cards ul{
+	list-style:none;
+	padding:0px;
+	margin:0px;
+	/*display:table;*/
+}
+#cards li{
+	list-style:none;
+	/*border-radius:10px;*/
+	width:100%;
+	top:35%;
+	/*display:table-cell;*/
+	vertical-align:middle;
+	/*border:1px solid #000;*/
+	/*margin:0px auto 0px auto;*/
+	/*padding:80px 10px;*/
+	text-align:center;
+	background:#FFF;
+	/*position:absolute;*/
+	/*border:1px solid #000;*/
+	/*left:50%;*/
+	/*margin-left:-45%;*/
+}
+#cards span{
+	position:absolute;
+	bottom:0px;
+	right:10px;
+}
+.shadow {
+  /*-webkit-box-shadow: 0px 0px 5px 5px rgba(202,202,202,0.5);
+  box-shadow: 0px 0px 5px 5px rgba(202,202,202,0.5);*/
+}
+.rightmarg{
+	margin-right:10px;
+	
+}
+.togglespace{
+	padding-top: 0.7em;
+	padding-bottom: 0.7em;
+	white-space:nowrap;
+}
+.custom, .excludes, .debug{
+	width:100%;
+}
+.custom ol, .excludes ol, .debug ol{
+	padding:0px;
+	margin:0px;
+	/*color:#FFF !important;*/
+}
+.custom li, .excludes li, .debug li{
+	display:inline-block;margin:2px;
+	/* background:#EBEBEB;padding:5px 10px;border-radius:10px;margin:3px;*/
+}
+.debug strong, .excludes strong, .custom strong{
+	margin-bottom:5px;
+	display:block;
+}
+.cardbody{
+	margin:0px auto;
+	text-align:center;
+}
+.cardbody h1{
+	text-align:center;
+}
+/*@media all and (max-width: 450px){*/
+.ui-field-contain, .ui-mobile fieldset.ui-field-contain {
+	border-width: 0 !important;
+	padding: 0 !important;
+	margin: 1em 0 !important;
+}
+/*}*/

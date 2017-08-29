@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Flashcards</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scaleable=no">
+<meta charset="utf-8">
+<head>
+<link rel="stylesheet" href="css/themes/default/jquery.mobile-1.4.0.min.css">
+<!--<link rel="shortcut icon" href="../favicon.ico">-->
+<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans:300,400,700">
+<script src="js/jquery.js"></script>
+<script src="js/jquery.mobile-1.4.0.min.js"></script>
+<script type="text/javascript" src="js/ydn.db-isw-core-qry.js"></script>
+<script type="text/javascript" src="js/flashcards1.5.js"></script>
+<link rel="stylesheet" href="css/cards.css">
+<!-- Fav and touch icons -->
+<!--<link rel="shortcut icon" href="images/ico/favicon.ico">-->
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="images/ico/apple-touch-icon-144-precomposed.png">
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="images/ico/apple-touch-icon-114-precomposed.png">
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="images/ico/apple-touch-icon-72-precomposed.png">
+<link rel="apple-touch-icon-precomposed" href="images/ico/apple-touch-icon-57-precomposed.png">
+</head>
+<body>
+<!-- Start of first page -->
+<div data-role="page" id="home">
+<div data-role="popup" id="popupDialog" data-overlay-theme="a" data-theme="a" data-dismissible="false" style="max-width:300px;">
+    <div data-role="header" data-theme="a">
+    <h1>Shuffle?</h1>
+    </div>
+    <div role="main" class="ui-content">
+        <h3 class="ui-title">Are you sure you want to shuffle the deck?</h3>
+    <p>This action cannot be undone.</p>
+        <a href="#" class="ui-btn ui-corner-all ui-shadow ui-btn-inline ui-btn-a" data-rel="back">Cancel</a>
+        <a href="#" class="ui-btn ui-corner-all ui-shadow ui-btn-inline ui-btn-a" data-rel="back" id="shuffle">Shuffle</a>
+    </div>
+</div>
+<div data-role="panel" id="mypanel" data-position="right" data-display="overlay">
+<div role="main" class="ui-content ui-body-a  ui-corner-all">
+<a href="#mypanel" data-rel="close" class="ui-btn ui-icon-delete ui-btn-icon-left">Close panel</a>
+<div class="debug"></div>
+<div class="excludes"></div>
+<div class="custom"></div>
+</div>
+<!-- panel content goes here -->
+</div><!-- /panel -->
+<div data-role="header" id="head">
+<a href="#options" id="options" class="ui-btn ui-btn-icon-left ui-icon-gear">Options</a><h1>Home</h1><span class="ui-li-count"></span></div>
+<div role="main" class="ui-content">
+      <div class="ui-body ui-body-a ui-corner-all"> 
+      <div class="introtext"> 
+<h3>Words Flash Cards</h3>
+<p>Please choose the decks from the <a href="#options">options menu</a> that you'd like for your flashcards.<br/>If you have already chosen them simply click begin to start.</p>
+      </div>
+      <div id="cards"><ul></ul></div>
+      </div>
+<button class="ui-btn ui-shadow ui-icon-check ui-btn-icon-left ui-corner-all" id="begin" style="margin: 10px auto;">Begin</button>
+</div>
+<div class="cookiedata"></div>
+<div data-role="footer" class="nav-glyphish-example" data-theme="b" data-position="fixed">
+    <div data-role="controlgroup" data-type="horizontal" data-grid="b" data-mini="true">
+    <a href="#popupDialog" data-rel="popup" data-position-to="window" data-transition="pop" class="ui-btn ui-btn-icon-left ui-icon-recycle shuffle">Shuffle</a>
+    <button href="#" id="prev" data-icon="arrow-l">Prev</button>
+    <button href="#" id="next" data-icon="arrow-r" class="ui-mini">Next</button>
+    <a href="#mypanel" id="settings" class="ui-btn ui-btn-icon-left ui-icon-bars ui-mini">Deck</a>
+    </div>
+</div>
+
+</div><!-- /page -->
+<!-- Start of second page -->
+<div data-role="page" id="options">
+<!--save-->
+<div data-role="popup" id="saveDialog" data-overlay-theme="a" data-theme="a" data-dismissible="false" style="max-width:300px;">
+    <div data-role="header" data-theme="a">
+    <h1>Saved</h1>
+    </div>
+    <div role="main" class="ui-content">
+        <h3 class="ui-title">Your settings have been saved to a cookie.</h3>
+    <p>You may clear your previous settings, by clicking save after making further changes.</p>
+        <a href="#" class="ui-btn ui-corner-all ui-shadow ui-btn-inline ui-btn-a" data-rel="back">Ok</a>
+    </div>
+</div>
+	<div data-role="header">
+		<a href="#home" id="options" class="ui-btn ui-btn-icon-left ui-icon-arrow-l">Back</a><a href="#" id="saveSettings1" class="ui-btn ui-btn-icon-right ui-icon-action ui-btn-icon-left saveSettings">Save</a><h1>Options</h1>
+	</div><!-- /header -->
+
+	<div role="main" class="ui-content">
+	  <div class="ui-body ui-corner-all">  
+<h3>Flashcard Options</h3>
+		<p>Please choose a set or sets of cards to use.</p>
+	  
+		<form>
+		<div id="1GWords">
+		<div class="ui-field-contain togglespace ui-mini">
+		<label for="slider2"><strong>1G Words:</strong></label>
+		<select name="slider2" id="slider2" data-role="slider">
+		   <option value="off">Off</option>
+		   <option value="on" selected="selected">On</option>
+		</select></div>
+		<div data-role="collapsible" class="wordlist1g ui-mini" id="1GWords_display">
+			<h4 class="wordlist1gbutton">Edit Words</h4>
+			<p class="words" id="1Goptions"></p>
+		</div>
+		</div>
+		<div id="2GWords">
+		<div class="ui-field-contain togglespace  ui-mini">
+		<label for="slider3"><strong>2G Words:</strong></label>
+		<select name="slider3" id="slider3" data-role="slider">
+		   <option value="off" selected="selected">Off</option>
+		   <option value="on">On</option>
+		</select></div>
+		<div data-role="collapsible" class="wordlist2g ui-state-disabled ui-mini" id="2GWords_display">
+			<h4 class="wordlist2gbutton">Edit Words</h4>
+				<p class="words" id="2Goptions"></p>
+		</div>
+		<div id="2GBWords">
+		<div class="ui-field-contain togglespace  ui-mini">
+		<label for="slider3a"><strong>2G-B Words:</strong></label>
+		<select name="slider3a" id="slider3a" data-role="slider">
+		   <option value="off" selected="selected">Off</option>
+		   <option value="on">On</option>
+		</select></div>
+		<div data-role="collapsible" class="wordlist2gb ui-state-disabled  ui-mini" id="2GBWords_display">
+			<h4 class="wordlist2gbbutton">Edit Words</h4>
+				<p class="words" id="2GBoptions"></p>
+		</div>
+		<div id="1BWords">
+		<div class="ui-field-contain togglespace  ui-mini">
+		<label for="slider4"><strong>1B Words:</strong></label>
+		<select name="slider4" id="slider4" data-role="slider">
+		   <option value="off" selected="selected">Off</option>
+		   <option value="on">On</option>
+		</select></div>
+		
+		<div data-role="collapsible" class="wordlist1b ui-state-disabled ui-mini" id="1BWords_display">
+			<h4 class="wordlist1bbutton">Edit Words</h4>
+		</div>
+		
+		
+		</div>
+		<strong>Custom Words:</strong>
+		<div class="ui-grid-a" id="MyWords">
+		<div class="ui-block-a ui-field-contain togglespace"><label for="slider5" class="ui-hidden-accessible"><strong>My Words:</strong></label>
+		<select name="slider5" id="slider5" data-role="slider" data-mini="true">
+		   <option value="off" selected="selected">Off</option>
+		   <option value="on">On</option>
+		</select>
+		</div>
+		<div class="ui-block-b"><a href="#Myoptions" class="ui-shadow ui-btn ui-corner-all mywordlist ui-state-disabled ui-mini ui-icon-edit ui-btn-icon-left">Edit words</a></div>
+		</div>
+		</form>
+		
+		<p></p>
+		</div>
+	</div><!-- /content -->
+</div><!-- /page -->
+
+
+
+
+<!-- Start of third page -->
+<div data-role="page" id="Myoptions">
+
+	<div data-role="header">
+		<a href="#options" id="options" class="ui-btn ui-btn-icon-left ui-icon-back">Back</a><a href="#" id="saveSettings5" class="ui-btn ui-btn-icon-right ui-icon-action ui-btn-icon-left saveSettings">Save</a><h1>1B Options</h1>
+	</div><!-- /header -->
+
+	<div role="main" class="ui-content">
+	  <div class="ui-body ui-body-a ui-corner-all"> 
+		  <h3>Flashcard Options</h3>
+		<p>Add or edit your custom words below. After making changes be sure to click 'Save' in the upper left.</p>
+		<form onsubmit="return validateMyForm();">
+		<div id="Myopt_display">
+		<p class="words">No Words Added</p>
+		</div>
+		<label for="my-word">Enter your custom word below: (mom,dad,etc)</label>
+		<input name="my-word" id="my-word" placeholder="My Word" value="" type="text">
+		<a href="#" id="submit-1" class="ui-shadow ui-btn ui-corner-all">Submit</a>
+		</form>
+	  </div>
+	</div><!-- /content -->
+
+    
+	<div data-role="footer" class="nav-glyphish-example" data-theme="b">
+	<div data-role="controlgroup" data-type="horizontal">
+   
+	</div>
+    </div>
+</div>
+
+</div><!-- /page -->
+<!--save dialog-->
+<div id="diag" data-role="dialog">
+    <div data-role="header" data-theme="a">
+        <h1>Saved</h1>
+    </div>
+    <div data-role="content" data-theme="a">
+        <p>You may clear your previous settings, by clicking save after making further changes.</p>
+        <a data-role="button" data-rel="back">Ok</a>
+    </div>
+</div>
+
+<!--err dialog-->
+<div id="error1" data-role="dialog">
+    <div data-role="header" data-theme="a">
+        <h1>Error</h1>
+    </div>
+    <div data-role="content" data-theme="a">
+        <p>Sorry that word is already added.</p>
+        <a data-role="button" data-rel="back">Ok</a>
+    </div>
+</div>
+<!--err dialog-->
+<div id="error2" data-role="dialog">
+    <div data-role="header" data-theme="a">
+        <h1>Error</h1>
+    </div>
+    <div data-role="content" data-theme="a">
+        <p>Sorry there wasn't a word entered.</p>
+        <a data-role="button" data-rel="back">Ok</a>
+    </div>
+</div>
+<!--err dialog-->
+<div id="error3" data-role="dialog">
+    <div data-role="header" data-theme="a">
+        <h1>Error</h1>
+    </div>
+    <div data-role="content" data-theme="a">
+        <p>Sorry it appears you've entered a number.</p>
+        <a data-role="button" data-rel="back">Ok</a>
+    </div>
+</div>
+</body>
+</html>

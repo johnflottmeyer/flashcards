@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+    <widget xmlns   = "http://www.w3.org/ns/widgets"
+        xmlns:gap   = "http://phonegap.com/ns/1.0"
+        id          = "com.phonegap.camsflashcards"
+        versionCode = "10" 
+        version     = "1.4.0" >
+
+    <!-- versionCode is optional and Android only -->
+
+    <name>Cams Flash Cards</name>
+
+    <description>
+        An application for Word Flashcards. 
+    </description>
+    
+
+    <author href="https://build.phonegap.com" email="johnflottmeyer@gmail.com">
+        John Flottmeyer
+    </author>
+    
+    <gap:platform name="ios" />
+    <gap:platform name="android" />
+    
+     <!-- universal preferences -->
+    <preference name="phonegap-version"  value="cli-6.5.0" /> 
+
+</widget>
