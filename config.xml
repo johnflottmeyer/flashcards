@@ -7,7 +7,7 @@
 
     <!-- versionCode is optional and Android only -->
 
-    <name>Cams Flash Cards</name>
+    <name>Fins Flash Cards</name>
 
     <description>
         An application for Word Flashcards. 
@@ -22,6 +22,6 @@
     <gap:platform name="android" />
     
      <!-- universal preferences -->
-    <preference name="phonegap-version"  value="cli-6.5.0" /> 
+    <preference name="phonegap-version" value="cli-6.5.0"/> 
 
 </widget>
