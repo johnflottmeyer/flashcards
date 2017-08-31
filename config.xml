@@ -3,7 +3,7 @@
         xmlns:gap   = "http://phonegap.com/ns/1.0"
         id          = "com.phonegap.camsflashcards"
         versionCode = "10" 
-        version     = "1.4.0" >
+        version     = "1.4.1" >
 
     <!-- versionCode is optional and Android only -->
 
@@ -27,9 +27,16 @@
     <preference name="phonegap-version" value="cli-6.5.0"/> 
     <preference name="orientation" value="portrait" /> 
     
+    <!--<preference name="fullscreen"                 value="true" />-->
+    <preference name="fullscreen" value="false" />
+    
     <!-- ios preferences --> 
     <preference name="target-device" value="universal" />
     <preference name="StatusBarOverlaysWebView" value="false" />
     <preference name="StatusBarBackgroundColor" value="#000000" />
+    
+    <gap:config-file platform="ios" parent="ITSAppUsesNonExemptEncryption" mode="add">
+		<false/>
+	</gap:config-file>
 
 </widget>
