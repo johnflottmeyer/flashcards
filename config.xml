@@ -19,9 +19,17 @@
     </author>
     
     <gap:platform name="ios" />
-    <gap:platform name="android" />
+    
+    <!-- third party plugins -->
+	<gap:plugin name="cordova-plugin-statusbar" source="npm" />
     
      <!-- universal preferences -->
     <preference name="phonegap-version" value="cli-6.5.0"/> 
+    <preference name="orientation" value="portrait" /> 
+    
+    <!-- ios preferences --> 
+    <preference name="target-device" value="universal" />
+    <preference name="StatusBarOverlaysWebView" value="false" />
+    <preference name="StatusBarBackgroundColor" value="#000000" />
 
 </widget>
